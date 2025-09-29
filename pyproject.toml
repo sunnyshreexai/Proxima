@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proxima-influence"
+version = "1.0.0"
+description = "A Proxy Model-Based Approach to Influence Analysis"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Sunny Shree", email = "sunny.shree@mavs.uta.edu"},
+    {name = "Yu Lei", email = "ylei@cse.uta.edu"},
+    {name = "Raghu N. Kacker"},
+    {name = "D. Richard Kuhn"}
+]
+maintainers = [
+    {name = "Sunny Shree", email = "sunny.shree@mavs.uta.edu"}
+]
+keywords = [
+    "machine learning",
+    "influence analysis",
+    "proxy model",
+    "interpretability",
+    "explainable AI",
+    "model debugging",
+    "training data",
+    "influence functions"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy>=1.7.0",
+    "scikit-learn>=1.0.0",
+    "pyyaml>=5.4",
+    "tqdm>=4.62.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "isort>=5.10.0",
+]
+visualization = [
+    "matplotlib>=3.5.0",
+    "seaborn>=0.11.0",
+]
+deep = [
+    "torch>=1.10.0",
+    "tensorflow>=2.8.0",
+]
+all = [
+    "proxima-influence[dev,visualization,deep]",
+]
+
+[project.urls]
+Homepage = "https://github.com/sunnyshreexai/Proxima"
+Documentation = "https://github.com/sunnyshreexai/Proxima/wiki"
+Repository = "https://github.com/sunnyshreexai/Proxima.git"
+"Bug Tracker" = "https://github.com/sunnyshreexai/Proxima/issues"
+
+[project.scripts]
+proxima = "proxima.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["proxima*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
