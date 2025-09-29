@@ -12,10 +12,6 @@ Proxima is a production-ready Python package for efficient influence analysis of
 
 Proxima introduces a **loss-over-distance ratio** metric to identify a subset of training instances that preserves the most influential data points. By building a simpler proxy model on this subset, Proxima achieves:
 
-- **95% average accuracy** in identifying top-10 influential instances
-- **3-11x speedup** compared to state-of-the-art methods
-- **Compatibility** with any ML model (scikit-learn, PyTorch, TensorFlow)
-
 ## Features
 
 - **Two-Phase Framework**: Preprocessing (metric learning + loss computation) and proxy model construction
@@ -50,35 +46,7 @@ cd Proxima
 pip install -e ".[dev]"
 ```
 
-## Quick Start
-
-```python
-from proxima import Proxima
-from sklearn.ensemble import RandomForestClassifier
-
-# Train your model
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-# Initialize Proxima
-proxima = Proxima(
-    model=model,
-    dataset=X_train,
-    labels=y_train
-)
-
-# Preprocessing (run once)
-proxima.preprocess()
-
-# Analyze influence for a test instance
-results = proxima.analyze_influence(
-    test_instance=X_test[0],
-    test_label=y_test[0]
-)
-
-print(f"Top-10 influential instances: {results['top_k_indices']}")
-print(f"Influence scores: {results['top_k_scores']}")
-print(f"Time taken: {results['time_taken']:.2f}s")
+}s")
 ```
 
 ## Architecture
@@ -183,56 +151,6 @@ config = ConfigPresets.memory_efficient()
 config = ConfigPresets.gpu_optimized()
 ```
 
-## Advanced Usage
-
-### Batch Analysis
-
-```python
-# Analyze multiple test instances
-results = proxima.batch_analyze(
-    test_instances=X_test[:100],
-    test_labels=y_test[:100],
-    parallel=True
-)
-```
-
-### Custom Metric Learning
-
-```python
-from proxima.metric_learning import MetricLearner
-
-class CustomMetric(MetricLearner):
-    def compute_distance(self, X1, X2):
-        # Your custom distance computation
-        return custom_distances
-
-proxima.metric_learner = CustomMetric(config)
-```
-
-### Evaluation Against Ground Truth
-
-```python
-# Evaluate against known influential instances
-metrics = proxima.evaluate(
-    ground_truth_influences=ground_truth,
-    test_instances=X_test
-)
-
-print(f"Mean accuracy: {metrics['mean_accuracy']:.2%}")
-```
-
-### Visualization
-
-```python
-from proxima.utils import visualize_influence_scores
-
-# Visualize influence scores
-visualize_influence_scores(
-    influence_scores=results['all_influence_scores'],
-    top_k=10,
-    save_path="influence_plot.png"
-)
-```
 
 ## API Reference
 
@@ -284,14 +202,8 @@ If you use Proxima in your research, please cite:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contributing
-
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ## Support
 
 For issues, questions, or suggestions, please open an issue on [GitHub](https://github.com/sunnyshreexai/Proxima/issues).
 
-## Acknowledgments
-
-This work is supported by research grant (70NANB21H092) from the Information Technology Laboratory of the National Institute of Standards and Technology (NIST).
