@@ -234,25 +234,6 @@ visualize_influence_scores(
 )
 ```
 
-## Benchmark Results
-
-Based on experiments with multiple datasets:
-
-| Dataset | Proxima | FastIF | Scaling-Up |
-|---------|---------|--------|------------|
-| Adult-Income | **98%** | 91% | 84% |
-| Lending Club | **99%** | 93% | 88% |
-| COMPAS | **95%** | 90% | 86% |
-| German-Credit | 93% | **97%** | 81% |
-| MNIST | **93%** | 86% | 78% |
-| Fashion-MNIST | **94%** | 92% | 83% |
-| CIFAR-10 | 87% | 89% | **91%** |
-
-**Average Time (seconds):**
-- Proxima: **2.1s**
-- FastIF: 6.6s
-- Scaling-Up: 6.8s
-
 ## API Reference
 
 ### Core Classes
