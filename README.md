@@ -161,14 +161,8 @@ If you use Proxima in your research, please cite:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contributing
-
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ## Support
 
 For issues, questions, or suggestions, please open an issue on [GitHub](https://github.com/sunnyshreexai/Proxima/issues).
 
-## Acknowledgments
-
-This work is supported by research grant (70NANB21H092) from the Information Technology Laboratory of the National Institute of Standards and Technology (NIST).
