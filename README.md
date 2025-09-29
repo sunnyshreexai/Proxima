@@ -46,8 +46,6 @@ cd Proxima
 pip install -e ".[dev]"
 ```
 
-}s")
-```
 
 ## Architecture
 
@@ -91,46 +89,6 @@ Proxima employs a two-level framework:
 └─────────────────────────────────────────┘
 ```
 
-## Configuration
-
-All parameters are optional and configurable:
-
-```python
-from proxima import ProximaConfig, ConfigPresets
-
-# Use preset configuration
-config = ConfigPresets.fast()  # Quick analysis
-
-# Or customize parameters
-config = ProximaConfig(
-    # Core parameters
-    top_k=10,                        # Number of top influential instances
-    lambda_ratio=1.0,                # Loss-over-distance ratio parameter
-    threshold_initial=0.5,           # Initial threshold for subset selection
-
-    # Metric learning
-    metric_type="nca",               # NCA, siamese, euclidean, cosine
-    metric_learning_epochs=50,       # Training epochs for metric learning
-
-    # Proxy model
-    proxy_model_type="same",         # same, simpler, or linear
-    proxy_training_epochs=100,       # Training epochs for proxy model
-
-    # Influence analysis
-    influence_method="influence_function",  # loo, fastif, scaling_up
-
-    # Performance
-    use_gpu=True,                    # Use GPU if available
-    cache_distances=True,            # Cache distance computations
-    parallel_workers=4,              # Parallel processing
-
-    # Output
-    verbose=1,                       # Logging verbosity
-    save_intermediate=True           # Save intermediate results
-)
-
-proxima = Proxima(model, X_train, y_train, config)
-```
 
 ### Configuration Presets
 
@@ -150,6 +108,7 @@ config = ConfigPresets.memory_efficient()
 # GPU-optimized configuration
 config = ConfigPresets.gpu_optimized()
 ```
+
 
 
 ## API Reference
@@ -202,8 +161,14 @@ If you use Proxima in your research, please cite:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ## Support
 
 For issues, questions, or suggestions, please open an issue on [GitHub](https://github.com/sunnyshreexai/Proxima/issues).
 
+## Acknowledgments
+
+This work is supported by research grant (70NANB21H092) from the Information Technology Laboratory of the National Institute of Standards and Technology (NIST).
