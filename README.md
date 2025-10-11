@@ -109,8 +109,6 @@ config = ConfigPresets.memory_efficient()
 config = ConfigPresets.gpu_optimized()
 ```
 
-
-
 ## API Reference
 
 ### Core Classes
@@ -120,42 +118,6 @@ config = ConfigPresets.gpu_optimized()
 - `MetricLearner`: Base class for metric learning
 - `ProxyModelBuilder`: Proxy model construction
 - `InfluenceAnalyzer`: Influence computation
-
-### Key Methods
-
-```python
-# Initialize
-proxima = Proxima(model, dataset, labels, config)
-
-# Preprocessing (run once)
-proxima.preprocess()
-
-# Analyze single instance
-results = proxima.analyze_influence(test_instance, test_label)
-
-# Batch analysis
-results = proxima.batch_analyze(test_instances, test_labels)
-
-# Evaluate accuracy
-metrics = proxima.evaluate(ground_truth, test_instances)
-
-# Save/Load state
-proxima.save("proxima_state.pkl")
-proxima = Proxima.load("proxima_state.pkl", model, dataset, labels)
-```
-
-## Citation
-
-If you use Proxima in your research, please cite:
-
-```bibtex
-@inproceedings{shree2024proxima,
-  title={Proxima: A Proxy Model-Based Approach to Influence Analysis},
-  author={Shree, Sunny and Lei, Yu and Kacker, Raghu N and Kuhn, D Richard},
-  booktitle={Proceedings of the International Conference on Software Testing},
-  year={2024}
-}
-```
 
 ## License
 
